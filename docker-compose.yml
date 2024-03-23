@@ -4,6 +4,7 @@ services:
     build: .
     tty: true
     volumes:
+      - .:/usr/src
       - bundle-volume:/usr/local/bundle
       - .history:/root/.bash_history
     ports:
