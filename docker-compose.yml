@@ -1,0 +1,12 @@
+version: "3.8"
+services:
+  web:
+    build: .
+    tty: true
+    volumes:
+      - bundle-volume:/usr/local/bundle
+      - .history:/root/.bash_history
+    ports:
+      - ${PORT:-3000}:3000
+volumes:
+  bundle-volume:
