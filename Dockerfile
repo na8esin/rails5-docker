@@ -12,6 +12,10 @@ RUN set -ex \
     && apt-get install -y \
                  nodejs \
                 --no-install-recommends
+
+RUN curl -O https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && \
+    dpkg -i google-chrome-stable_current_amd64.deb
+
 RUN npm install -g yarn
 
 COPY Gemfile Gemfile.lock ./
