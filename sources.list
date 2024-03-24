@@ -1,0 +1,2 @@
+deb http://archive.debian.org/debian/ stretch contrib main non-free amd64
+deb http://archive.debian.org/debian-security stretch/updates main
