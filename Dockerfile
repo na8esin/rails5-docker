@@ -1,6 +1,6 @@
 FROM ruby:2.5.1
 
-WORKDIR /usr/src
+WORKDIR /usr/src/app
 
 # ruby:2.5.1で使用されているdebian9(stretch)のパッケージリポジトリが移動したため変更する
 COPY sources.list /etc/apt/sources.list
@@ -30,3 +30,10 @@ RUN npm install -g yarn
 
 COPY Gemfile Gemfile.lock ./
 RUN bundle install
+
+# Entrypoint prepares the database.
+ENTRYPOINT ["./docker-entrypoint"]
+
+# Start the server by default, this can be overwritten at runtime
+EXPOSE 3000
+CMD ["./bin/rails", "server"]
