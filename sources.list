@@ -1,2 +1,3 @@
-deb http://archive.debian.org/debian/ stretch contrib main non-free amd64
-deb http://archive.debian.org/debian-security stretch/updates main amd64
+# architectureは自動で検出されるらしい
+deb http://archive.debian.org/debian/ stretch contrib main
+deb http://archive.debian.org/debian-security stretch/updates contrib main
