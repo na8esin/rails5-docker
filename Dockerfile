@@ -1,4 +1,4 @@
-FROM ruby:2.5.1
+FROM --platform=amd64 ruby:2.5.1
 
 WORKDIR /usr/src/app
 
@@ -17,10 +17,10 @@ RUN set -ex \
                 --no-install-recommends
 
 # seleniumを使ったテストを行うためにchromeをインストール
-#RUN curl -O https://dl.google.com/linux/direct/google-chrome-stable_current_arm64.deb && \
-#     dpkg -i google-chrome-stable_current_arm64.deb
+#RUN curl -O https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && \
+#     dpkg -i google-chrome-stable_current_amd64.deb
 
-# chromiumならインストールできる
+# chromiumならインストールできるけど、サンプルコードを実行してもエラーになる
 RUN apt-get install -y \
                 chromium \
                 chromium-driver \
@@ -30,6 +30,10 @@ RUN npm install -g yarn
 
 COPY Gemfile Gemfile.lock ./
 RUN bundle install
+
+# サンプルコード実行のため
+RUN apt install -y python3-pip
+RUN python3 -m pip install selenium
 
 # Entrypoint prepares the database.
 ENTRYPOINT ["./docker-entrypoint"]
