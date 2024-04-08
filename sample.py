@@ -1,4 +1,5 @@
 # python3 sample.py で実行
+# こっちは基本は動かない。エラーが出ることを確かめるためのコード
 
 import time
 
